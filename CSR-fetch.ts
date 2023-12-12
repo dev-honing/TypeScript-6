@@ -27,9 +27,17 @@ async function fetchExample(tagName: string, props: Props, children: string, url
     // Fetch API를 사용해 데이터 가져오기
     // 위 함수 선언부에서 async 키워드를 사용했기 때문에, fetchExample() 함수는 await 키워드를 사용할 수 있다.
     const response = await fetch(url);
-  }
-  catch {
-    
+    if (!response.ok) { // AJAX 통신의 일반적인 객체 구조에서 ok 속성을 사용한 예시
+      throw new Error(`통신 상태 불량: ${response.status}`);
+    }
+    // 위 fetch() await 키워드 때문에 아래 data라는 변수의 chunks는 Promise 객체가 되며
+    // 동기적으로 작성된 코드처럼 작동한다.
+    const data = await response.json();
+
+    // 가져온 데이터로 컴포넌트를 업데이트
+    element.innerHTML = JSON.stringify(data, null, 2);
+  } catch {
+
   }
 
   return element;
