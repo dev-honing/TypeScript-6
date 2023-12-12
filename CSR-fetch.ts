@@ -6,3 +6,18 @@
 type Props = {
   [key: string]: string;
 };
+
+async function fetchExample(tagName: string, props: Props, children: string, url: string): Promise<HTMLElement> {
+  // HTML 요소 생성
+  const element = document.createElement(tagName);
+
+  // Props 설정
+  for (const key in props) {
+    element.setAttribute(key, props[key]);
+  }
+
+  // 초기 내용 설정
+  element.innerHTML = children;
+
+  return element;
+}
