@@ -9,7 +9,12 @@ type Props = {
 
 // Promise<HTMLElement> 리턴이 Promise 객체를 반환한다는 의미,
 // <꺾쇠> 표기는 제네릭 문법으로, '할당'할 때에 결정한다.
-// HTMLElement는 따로 타입을 지정하지 않았지만, 기본적으로 제공되는 타입
+// HTMLElement는 따로 타입을 지정하지 않았지만, 기본적으로 제공되는 타입이다.
+
+// 따라서, 함수 fetchExample()은 HTMLElement 무언가를 Promise 객체로 핸들링한다는 뜻이며,
+// async와 함께 사용한 것을 통해 Promise 객체를 동기적으로 작성된 코드처럼 작동시킨다.
+// fetch()는 기본적으로 비동기적으로 작동하기 때문에 비동기 상태로 그냥 두면,
+// (통신상태에 따라) 아래의 HTML component 생성하는 부분보다 먼저 실행될 수 있다.
 
 async function fetchExample(tagName: string, props: Props, children: string, url: string): Promise<HTMLElement> {
   // HTML 요소 생성
