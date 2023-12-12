@@ -23,5 +23,14 @@ async function fetchExample(tagName: string, props: Props, children: string, url
   // 초기 내용 설정
   element.innerHTML = children;
 
+  try {
+    // Fetch API를 사용해 데이터 가져오기
+    // 위 함수 선언부에서 async 키워드를 사용했기 때문에, fetchExample() 함수는 await 키워드를 사용할 수 있다.
+    const response = await fetch(url);
+  }
+  catch {
+    
+  }
+
   return element;
 }
