@@ -49,3 +49,15 @@ async function fetchExample(tagName: string, props: Props, children: string, url
 
   return element;
 }
+
+// 사용 예시
+// HTML 문서에서 위 코드를 불러오거나, 작성했다고 가정한다.
+const root = document.getElementById('root');
+
+fetchExample('div', {class: 'example'}, '로딩 중', 'http://my.server.localhost/directory')
+  .then((div) => {
+    root?.appendChild(div);
+  })
+  .catch((error) => {
+    console.error('catch 구문 error 매개변수 인자가 전달됨: ', error);
+  });
