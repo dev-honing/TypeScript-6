@@ -7,6 +7,10 @@ type Props = {
   [key: string]: string;
 };
 
+// Promise<HTMLElement> 리턴이 Promise 객체를 반환한다는 의미,
+// <꺾쇠> 표기는 제네릭 문법으로, '할당'할 때에 결정한다.
+// HTMLElement는 따로 타입을 지정하지 않았지만, 기본적으로 제공되는 타입
+
 async function fetchExample(tagName: string, props: Props, children: string, url: string): Promise<HTMLElement> {
   // HTML 요소 생성
   const element = document.createElement(tagName);
