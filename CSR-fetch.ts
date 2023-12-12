@@ -36,8 +36,10 @@ async function fetchExample(tagName: string, props: Props, children: string, url
 
     // 가져온 데이터로 컴포넌트를 업데이트
     element.innerHTML = JSON.stringify(data, null, 2);
-  } catch {
-
+  } catch (error) { // try 구문이 실패했을 때는 통신상태 불량일 확률이 상당히 높다.
+    console.error('Fetch error:', error);
+    // 실패 시, 메시지 업데이트
+    element.innerHTML = "아직 데이터가 수신되지 않았습니다.";
   }
 
   return element;
